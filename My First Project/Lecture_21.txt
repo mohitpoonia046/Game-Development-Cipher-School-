@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI
+
+public class Timer : MonoBehaviour
+{
+    public float timeValue = 60f;
+    public bool isTimerRunning = false;
+    private float currentTime;
+
+    public Text timerText;
+
+    private void Start()
+    {
+        isTimerRunning = true;
+        currentTime = timeValue;
+    }
+
+    private void Update()
+    {
+        if(isTimerRunning)
+        {
+            currentTime = currentTime - Time.deltaTime;
+        }
+    }
+}

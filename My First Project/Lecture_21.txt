@@ -19,9 +19,24 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-        if(isTimerRunning)
+        if (isTimerRunning)
         {
             currentTime = currentTime - Time.deltaTime;
+            if(current Time <= 0.0f)
+            {
+                 currentTime = 0.0f;
+                 isTimeRunning = false;
+            }
+
+            UpdateTimerText();
         }
+    }
+
+    void UpdateTimerText()
+    {
+         int minutes = Mathf.FloorToInt(currentTime / 60.0f);
+         int seconds = Mathf.FloorToInt(currentTime % 60.0f);
+
+         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI
 
 public class Timer : MonoBehaviour
 {
+    public CollectableManager collectableManager 
     public float timeValue = 60f;
     public bool isTimerRunning = false;
     private float currentTime;
@@ -22,11 +23,17 @@ public class Timer : MonoBehaviour
         if (isTimerRunning)
         {
             currentTime = currentTime - Time.deltaTime;
-            if(current Time <= 0.0f)
+            if(current Time <= 0.0f && !collectableManager.allCoinsCollected)
             {
                  currentTime = 0.0f;
                  isTimeRunning = false;
+
+                 Debug.Log("Game Lost");
             }
+            if(collectableManager.allCoinsCollected)
+            {
+               Debug.Log("Game Won");
+               isTimmerRunning = false;
 
             UpdateTimerText();
         }
